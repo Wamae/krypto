@@ -3,6 +3,8 @@ An Android app to manage your crypto currency portfolio.
 Min Api Level : 
 Build System : Gradle
 
+# Table of Contents
+
 # Architecture
 The appplication uses MVI architechture:
 * Model
@@ -18,4 +20,3 @@ The appplication uses MVI architechture:
 # Demo
 # Copyright Notice
 # License
-# Table of Contents
