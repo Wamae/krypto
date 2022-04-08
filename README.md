@@ -16,7 +16,7 @@ The appplication uses MVI architechture:
 
 # Testing
 # Libraries
-# Contributors
+### Contributors
 # Demo
 # Copyright Notice
 # License
