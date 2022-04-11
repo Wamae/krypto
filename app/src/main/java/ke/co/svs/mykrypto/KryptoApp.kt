@@ -1,7 +1,9 @@
 package ke.co.svs.mykrypto
 
 import android.app.Application
+import ke.co.svs.mykrypto.di.repositoryModule
 import ke.co.svs.mykrypto.di.retrofitModule
+import ke.co.svs.mykrypto.di.viewmodelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -15,7 +17,13 @@ class KryptoApp : Application() {
             // declare used Android context
             androidContext(this@KryptoApp)
             // declare modules
-            modules(listOf(retrofitModule))
+            modules(
+                listOf(
+                    retrofitModule,
+                    repositoryModule,
+                    viewmodelModule
+                )
+            )
         }
     }
 }
