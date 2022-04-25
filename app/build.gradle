@@ -75,12 +75,20 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
 
     //Koin
+    // Koin Core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin Test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+    implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.google.code.gson:gson:2.8.9'
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.2")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     // optional - Test helpers

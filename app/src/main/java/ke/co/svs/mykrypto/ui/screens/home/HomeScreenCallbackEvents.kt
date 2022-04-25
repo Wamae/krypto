@@ -1,9 +1,9 @@
-package com.example.basicmvvm.ui.screens.settings
+package ke.co.svs.mykrypto.ui.screens.home
 
-import ke.co.svs.mykrypto.domain.model.Crypto
+import ke.co.svs.mykrypto.domain.model.CryptoDataModel
 
 sealed class HomeScreenCallbackEvents{
-    data class OnCryptoItemClick(val crypto: Crypto) : HomeScreenCallbackEvents()
+    data class OnCryptoItemClick(val cryptoDataModel: CryptoDataModel) : HomeScreenCallbackEvents()
 
 }
 
