@@ -17,6 +17,25 @@ The appplication uses MVI architechture:
 # Testing
 # Libraries
 ### Contributors
+
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/Wamae>
+            <img src=https://avatars.githubusercontent.com/u/11459159?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Benson Wamae/>
+            <br />
+            <sub style="font-size:14px"><b>Benson Wamae</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/wamaeb>
+            <img src=https://avatars.githubusercontent.com/u/45064148?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=wamaeb/>
+            <br />
+            <sub style="font-size:14px"><b>wamaeb</b></sub>
+        </a>
+    </td>
+</tr>
+</table>
 # Demo
 # Copyright Notice
 # License
