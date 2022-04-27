@@ -9,12 +9,13 @@ class KryptoApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // start Koin!
+
+        // start Koin
         startKoin {
             // declare used Android context
             androidContext(this@KryptoApp)
             // declare modules
-            modules(retrofitModule)
+            modules(listOf(retrofitModule))
         }
     }
 }
