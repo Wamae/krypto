@@ -18,6 +18,8 @@ The appplication uses MVI architechture:
 # Libraries
 ### Contributors
 
+[![Add contributors](https://github.com/Wamae/krypto/actions/workflows/contributors.yml/badge.svg?branch=main)](https://github.com/Wamae/krypto/actions/workflows/contributors.yml)
+
 <table>
 <tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
