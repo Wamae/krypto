@@ -33,7 +33,6 @@ private fun Scope.retrofitHttpClient(): OkHttpClient {
         connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
         writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
         readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-        // addInterceptor(get())
         addInterceptor(HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY

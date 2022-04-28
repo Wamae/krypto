@@ -1,6 +1,7 @@
 package ke.co.svs.mykrypto.di
 
 
+import ke.co.svs.mykrypto.ui.screens.addCrypto.AddCryptoScreenViewModel
 import ke.co.svs.mykrypto.ui.screens.alerts.AlertsScreenViewModel
 import ke.co.svs.mykrypto.ui.screens.charts.ChartsScreenViewModel
 import ke.co.svs.mykrypto.ui.screens.home.HomeScreenViewModel
@@ -9,7 +10,9 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
+//    viewModel { HomeScreenViewModel() }
     viewModel { HomeScreenViewModel(get()) }
+    viewModel { AddCryptoScreenViewModel(get()) }
     viewModel { ChartsScreenViewModel() }
     viewModel { AlertsScreenViewModel() }
     viewModel { SettingsScreenViewModel() }
