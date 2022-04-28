@@ -1,4 +1,4 @@
-package com.example.basicmvvm.ui.screens.settings
+package ke.co.svs.mykrypto.ui.screens.charts
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

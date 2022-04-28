@@ -5,7 +5,6 @@ import ke.co.svs.mykrypto.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidApplication
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -34,7 +33,6 @@ private fun Scope.retrofitHttpClient(): OkHttpClient {
         connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
         writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
         readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-        // addInterceptor(get())
         addInterceptor(HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY

@@ -1,4 +1,4 @@
-package com.example.basicmvvm.ui.screens.splash
+package ke.co.svs.mykrypto.ui.screens.splash
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable

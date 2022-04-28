@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.google.gson.JsonArray
 
 @Entity(tableName = "cryptos")
-class Crypto(
+class CryptoDataModel(
     @PrimaryKey
     val id: String?,
     val name: String?,
@@ -16,5 +16,5 @@ class Crypto(
     val priceChange24h: Double?,
     val percentChange24h: Double?,
     val lastUpdated: String?,
-    val sparkData: JsonArray?
+//    val sparkData: JsonArray?
 )

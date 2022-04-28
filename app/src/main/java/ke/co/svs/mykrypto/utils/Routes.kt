@@ -6,6 +6,5 @@ object Routes {
     const val ROUTE_CHARTS = "route_charts"
     const val ROUTE_ALERTS= "route_alerts"
     const val ROUTE_SETTINGS = "route_settings"
-
-
+    const val ROUTE_ADD_CRYPTO = "route_add_crypto"
 }
