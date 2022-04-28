@@ -9,14 +9,18 @@ import retrofit2.http.Query
 import retrofit2.http.Url
 
 interface CoinGeckoService {
-    @GET("ticker")
-    fun getMyCryptos(@Query("limit") limit: Int):
-            Flow<List<CryptoResponse>>
+    //    @GET("ticker")
+//    suspend fun getCryptos(@Query("limit") limit: Int):
+//            Resource<List<CryptoResponse>>
+    @GET("coinlist")
+    suspend fun getCryptos(): Resource<List<CryptoResponse>>
 
     @GET("coins/markets")
-    fun getCryptoInfo(@Query("per_page") perPage: Int,
-                      @Query("vs_currency") currency: String,
-                      @Query("sparkline") sparkLine: Boolean): Flow<JsonArray>
+    fun getCryptoInfo(
+        @Query("per_page") perPage: Int,
+        @Query("vs_currency") currency: String,
+        @Query("sparkline") sparkLine: Boolean,
+    ): Flow<JsonArray>
 
     @GET
     fun getCryptoDetails(@Url url: String): Flow<JsonObject>
