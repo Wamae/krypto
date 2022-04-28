@@ -1,13 +1,13 @@
 package ke.co.svs.mykrypto.domain.repositories
 
-import ke.co.svs.mykrypto.domain.model.Crypto
-import ke.co.svs.mykrypto.network.responses.CryptoResponse
+import ke.co.svs.mykrypto.domain.model.CryptoDataModel
+import ke.co.svs.mykrypto.network.Resource
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
 
 interface CryptoRepository {
-    fun getAllCryptos(): Flow<List<Crypto>>
-    suspend fun fetchCryptos(limit: Int): Flow<List<CryptoResponse>>
+    fun getCryptos(limit: Int): Flow<List<CryptoDataModel>>
+
+    suspend fun fetchCryptos(): Resource<Flow<List<CryptoDataModel>>>
 
     // fun getAllCryptoInfo(perPage: Int): Flow<JsonArray>
 
