@@ -1,18 +1,16 @@
 package ke.co.svs.mykrypto.ui.screens.addCrypto
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -24,15 +22,19 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import ke.co.svs.mykrypto.ui.components.CircularProgress
 import ke.co.svs.mykrypto.ui.theme.TextGray
-import ke.co.svs.mykrypto.ui.theme.TextWhite
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
 @Composable
 fun AddCryptoScreen(
     coroutineScope: CoroutineScope,
+    navController: NavController,
+    addCryptoViewModel: AddCryptoScreenViewModel = getViewModel<AddCryptoScreenViewModel>(),
 ) {
     val scaffoldHostState = rememberScaffoldState()
     val modalBottomSheetState =
@@ -51,6 +53,8 @@ fun AddCryptoScreen(
         selectedCoin = "BITCOIN"
         coroutineScope.launch { modalBottomSheetState.show() }
     }
+
+    val cryptoList = addCryptoViewModel.cryptosFlow.collectAsState(initial = emptyList())
 
 
 
@@ -71,8 +75,23 @@ fun AddCryptoScreen(
                     Spacer(modifier = Modifier.height(5.dp))
                 }
             }) {
-            Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
-                Row(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp)) {
+                Row(modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically) {
+                    IconButton(
+                        modifier = Modifier.then(Modifier.size(40.dp)),
+                        onClick = { navController.popBackStack() },
+                    ) {
+                        Icon(
+                            Icons.Filled.ArrowBack,
+                            "Arrow Back",
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(5.dp))
+
                     OutlinedTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = query,
@@ -94,6 +113,36 @@ fun AddCryptoScreen(
                         textStyle = TextStyle(color = Color.Black),
                     )
                 }
+
+                when (val state = addCryptoViewModel.uiState.collectAsState().value) {
+                    is AddCryptoScreenViewModel.AddCryptoUiState.Loading ->
+                        Box(modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center) {
+                            CircularProgress()
+                        }
+                    is AddCryptoScreenViewModel.AddCryptoUiState.Empty ->
+                        Box(modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center) {
+                            Text(text = "No coins found")
+                        }
+                    is AddCryptoScreenViewModel.AddCryptoUiState.Loaded ->
+                        LazyColumn(
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 8.dp)
+                        ) {
+                            items(cryptoList.value) { crypto ->
+                                Text(text = crypto.name!!)
+                            }
+
+                        }
+                    is AddCryptoScreenViewModel.AddCryptoUiState.Error ->
+                        Box(modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center) {
+                            Text(text = "We couldn't load \n Please refresh")
+                        }
+
+                }
+
             }
 
         }

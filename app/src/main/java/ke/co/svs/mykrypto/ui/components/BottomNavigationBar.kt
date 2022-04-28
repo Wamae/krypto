@@ -1,5 +1,6 @@
 package ke.co.svs.mykrypto.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -8,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -17,7 +19,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import ke.co.svs.mykrypto.utils.Routes
 
 
-@OptIn(ExperimentalMaterialApi::class)
+//@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BottomNavigationBar(
     navController: NavController,
@@ -68,9 +70,10 @@ fun BottomNavigationBar(
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         if (item.badgeCount > 0) {
-                            BadgeBox(badgeContent = {
-                                Text(text = item.badgeCount.toString())
-                            }) {
+                            BadgedBox(
+                                badge = { Badge { Text(text = item.badgeCount.toString()) }},
+                               ){
+
                                 Icon(imageVector = item.icon, contentDescription = item.name)
                             }
                         } else {
