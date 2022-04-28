@@ -1,12 +1,13 @@
 package ke.co.svs.mykrypto.domain.repositories
 
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
-import ke.co.svs.mykrypto.domain.model.Crypto
+import ke.co.svs.mykrypto.domain.model.CryptoDataModel
+import ke.co.svs.mykrypto.network.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface CryptoRepository {
-    fun getAllCryptos(): Flow<List<Crypto>>
+    fun getCryptos(limit: Int): Flow<List<CryptoDataModel>>
+
+    suspend fun fetchCryptos(): Resource<Flow<List<CryptoDataModel>>>
 
     // fun getAllCryptoInfo(perPage: Int): Flow<JsonArray>
 
