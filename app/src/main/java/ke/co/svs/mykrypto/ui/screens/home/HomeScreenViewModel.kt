@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ke.co.svs.mykrypto.domain.model.Crypto
-import ke.co.svs.mykrypto.domain.repositories.CryptoRepository
 import ke.co.svs.mykrypto.domain.repositories.CryptoRepositoryImpl
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -30,7 +29,7 @@ class HomeScreenViewModel() : ViewModel() {
     init {
         viewModelScope.launch {
             _uiState.value = HomeUiState.Loading
-            cryptosFlow.collect { it: List<Crypto> ->
+            cryptosFlow.collect {
                 HomeUiState.Loaded(it)
             }
         }
