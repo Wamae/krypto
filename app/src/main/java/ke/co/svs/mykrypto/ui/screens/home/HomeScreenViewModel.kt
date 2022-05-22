@@ -52,8 +52,6 @@ class HomeScreenViewModel() : ViewModel() {
             /** Tell HomeState the state */
             _uiState.value = HomeUiState.Loading
 
-
-
             viewModelScope.launch {
                 cryptoRepository.fetchCryptos(limit = 30).collect {
                     //How to change for CryptoResponse to Crypto

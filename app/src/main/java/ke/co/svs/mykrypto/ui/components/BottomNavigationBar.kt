@@ -18,8 +18,6 @@ import ke.co.svs.mykrypto.utils.Routes
 import androidx.compose.material.BadgedBox
 
 
-
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BottomNavigationBar(
     navController: NavController,
