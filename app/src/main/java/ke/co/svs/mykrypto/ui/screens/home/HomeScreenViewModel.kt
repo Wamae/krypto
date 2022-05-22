@@ -1,4 +1,4 @@
-package com.example.basicmvvm.ui.screens.settings
+package ke.co.svs.mykrypto.ui.screens.home
 
 
 import android.util.Log
@@ -9,8 +9,6 @@ import ke.co.svs.mykrypto.domain.repositories.CryptoRepository
 import ke.co.svs.mykrypto.domain.repositories.CryptoRepositoryImpl
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEmpty
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 import retrofit2.HttpException
@@ -23,7 +21,7 @@ class HomeScreenViewModel() : ViewModel() {
     private val _uiState = MutableStateFlow<HomeUiState>(HomeUiState.Empty)
     val uiState: StateFlow<HomeUiState> = _uiState
 
-    val cryptoRepository by inject<CryptoRepository>()
+    val cryptoRepository: CryptoRepositoryImpl by inject(CryptoRepositoryImpl::class.java)
 
     // Locally saved
     val cryptosFlow = cryptoRepository.getAllCryptos()
@@ -32,7 +30,7 @@ class HomeScreenViewModel() : ViewModel() {
     init {
         viewModelScope.launch {
             _uiState.value = HomeUiState.Loading
-            cryptosFlow.collect {
+            cryptosFlow.collect { it: List<Crypto> ->
                 HomeUiState.Loaded(it)
             }
         }
@@ -50,7 +48,7 @@ class HomeScreenViewModel() : ViewModel() {
         }
     }
 
-     fun fetchCryptos() {
+    fun fetchCryptos() {
         try {
             /** Tell HomeState the state */
             _uiState.value = HomeUiState.Loading
@@ -82,6 +80,5 @@ class HomeScreenViewModel() : ViewModel() {
         class Loaded(val data: List<Crypto>) : HomeUiState()
         class Error(val message: String) : HomeUiState()
     }
-
 
 }

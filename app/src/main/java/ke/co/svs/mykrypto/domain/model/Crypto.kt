@@ -2,10 +2,9 @@ package ke.co.svs.mykrypto.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.JsonArray
 
 @Entity(tableName = "cryptos")
-class CryptoDataModel(
+class Crypto(
     @PrimaryKey
     val id: String?,
     val name: String?,
@@ -16,5 +15,4 @@ class CryptoDataModel(
     val priceChange24h: Double?,
     val percentChange24h: Double?,
     val lastUpdated: String?,
-//    val sparkData: JsonArray?
 )

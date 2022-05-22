@@ -28,7 +28,7 @@ class KryptoApp : Application() {
                 retrofitModule,
                 repositoryModule,
                 viewModelModule,
-                databaseModule
+                // databaseModule //TODO: This module does not exist
             )
         }
     }

@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ke.co.svs.mykrypto.utils.Routes
+import androidx.compose.material.BadgedBox
+
 
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -68,7 +70,7 @@ fun BottomNavigationBar(
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         if (item.badgeCount > 0) {
-                            BadgeBox(badgeContent = {
+                            BadgedBox(badge = {
                                 Text(text = item.badgeCount.toString())
                             }) {
                                 Icon(imageVector = item.icon, contentDescription = item.name)
