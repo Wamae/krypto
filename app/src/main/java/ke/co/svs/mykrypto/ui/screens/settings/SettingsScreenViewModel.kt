@@ -1,5 +1,4 @@
-package com.example.basicmvvm.ui.screens.settings
-
+package ke.co.svs.mykrypto.ui.screens.settings
 
 import androidx.lifecycle.ViewModel
 

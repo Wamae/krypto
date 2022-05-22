@@ -10,14 +10,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import ke.co.svs.mykrypto.ui.components.BottomNavigationBar
-import ke.co.svs.mykrypto.ui.components.TopBar
+import org.koin.java.KoinJavaComponent.inject
 
 @Composable
 fun HomeScreen(
     navController: NavController,
 ) {
     val scaffoldHostState = rememberScaffoldState()
-//    val viewModel = get<HomeScreenViewModel>()
+   val viewModel by inject<HomeScreenViewModel>(HomeScreenViewModel::class.java)
+
     Scaffold(
         scaffoldState = scaffoldHostState,
 //        topBar = { TopBar(navController = navController) },
