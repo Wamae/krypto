@@ -5,6 +5,7 @@ buildscript {
         koin_version = '3.1.5'
         room_version = '2.4.2'
         kotlin_version = '1.6.10'
+        timber_version = '5.0.1'
     }
     repositories {
         google()

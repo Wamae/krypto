@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 import retrofit2.HttpException
+import timber.log.Timber
 
 
 class HomeScreenViewModel() : ViewModel() {
@@ -42,7 +43,7 @@ class HomeScreenViewModel() : ViewModel() {
     fun onEvent(event: HomeScreenCallbackEvents) {
         when (event) {
             is HomeScreenCallbackEvents.OnCryptoItemClick -> {
-                Log.i(TAG, "CLICKED")
+                Timber.i(TAG, "CLICKED")
             }
         }
     }
@@ -62,10 +63,10 @@ class HomeScreenViewModel() : ViewModel() {
 
 
         } catch (e: HttpException) {
-            e.message()?.let { Log.e(TAG, it) }
+            e.message()?.let { Timber.e(TAG, it) }
             _uiState.value = HomeUiState.Error(e.message())
         } catch (e: Exception) {
-            e.message?.let { Log.e(TAG, it) }
+            e.message?.let { Timber.e(TAG, it) }
             _uiState.value = e.message?.let { HomeUiState.Error(it) }!!
         }
     }

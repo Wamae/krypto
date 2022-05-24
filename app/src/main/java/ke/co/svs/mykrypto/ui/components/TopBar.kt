@@ -18,7 +18,7 @@ fun TopBar(navController: NavController) {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    var title: String = "Cryponite"
+    val title: String
     when (currentRoute) {
         Routes.ROUTE_HOME -> title = "Cryponite"
         Routes.ROUTE_CHARTS -> title = "Charts"
