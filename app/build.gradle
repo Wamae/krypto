@@ -1,10 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
     compileSdk 31
+
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
 
     defaultConfig {
         applicationId "ke.co.svs.mykrypto"
@@ -95,6 +102,9 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt  "androidx.room:room-compiler:$room_version"
+    implementation 'androidx.room:room-ktx:2.4.2' // Kotlin Extensions and Coroutines support for Room
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1' // LifecycleScope
+
 
 }

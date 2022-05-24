@@ -13,14 +13,16 @@ import org.koin.java.KoinJavaComponent.inject
 import retrofit2.HttpException
 
 
-class HomeScreenViewModel() : ViewModel() {
+class HomeScreenViewModel(
+    val cryptoRepository: CryptoRepositoryImpl
+) : ViewModel() {
 
     private val TAG = "CHARTS VIEWMODEL"
 
     private val _uiState = MutableStateFlow<HomeUiState>(HomeUiState.Empty)
     val uiState: StateFlow<HomeUiState> = _uiState
 
-    val cryptoRepository: CryptoRepositoryImpl by inject(CryptoRepositoryImpl::class.java)
+
 
     // Locally saved
     val cryptosFlow = cryptoRepository.getAllCryptos()
@@ -54,7 +56,7 @@ class HomeScreenViewModel() : ViewModel() {
 
             viewModelScope.launch {
                 cryptoRepository.fetchCryptos(limit = 30).collect {
-                    //How to change for CryptoResponse to Crypto
+//                    How to change for CryptoResponse to Crypto
 //                    HomeUiState.Loaded(it)
                 }
 

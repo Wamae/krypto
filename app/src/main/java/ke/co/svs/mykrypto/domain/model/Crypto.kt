@@ -6,11 +6,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cryptos")
 class Crypto(
     @PrimaryKey
-    val id: String?,
+    val id: String,
     val name: String?,
     val symbol: String?,
     val logo: String?,
-    @Transient val myQuantity: Double? = 0.00,
+    val myQuantity: Double? = 0.00,
     val price: Double?,
     val priceChange24h: Double?,
     val percentChange24h: Double?,
