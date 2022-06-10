@@ -11,7 +11,7 @@ import retrofit2.http.Url
 interface CoinGeckoService {
     @GET("ticker")
     fun getMyCryptos(@Query("limit") limit: Int):
-            Flow<List<CryptoResponse>>
+            List<CryptoResponse>
 
     @GET("coins/markets")
     fun getCryptoInfo(@Query("per_page") perPage: Int,

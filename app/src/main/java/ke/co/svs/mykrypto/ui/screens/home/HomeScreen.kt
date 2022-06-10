@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import ke.co.svs.mykrypto.ui.components.BottomNavigationBar
+import ke.co.svs.mykrypto.utils.Resource
 import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.inject
 
@@ -21,7 +22,7 @@ fun HomeScreen(
     val scaffoldHostState = rememberScaffoldState()
 //   val viewModel by inject<HomeScreenViewModel>()
     val viewModel = getViewModel<HomeScreenViewModel>()
-//    viewModel.fetchCryptos()
+
 
     Scaffold(
         scaffoldState = scaffoldHostState,
@@ -37,11 +38,21 @@ fun HomeScreen(
 
         }
     ) {
+
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "Home Screen")
+//            lifecycleScope.launch {
+//                viewModel.stateFlow.collect { resource ->
+//                    when (resource.status) {
+//                        Resource.Status.SUCCESS -> Text(text = "Success")
+//                        Resource.Status.LOADING -> Text(text = "Loading")
+//                        Resource.Status.ERROR -> Text(text =resource.message!!)
+//                    }
+//                }
+//            }
+
         }
     }
 

@@ -19,5 +19,13 @@ interface CryptoDao {
     suspend fun getCryptoById(id: Int): Crypto?
 
     @Query("SELECT * FROM cryptos")
-    fun getCryptos(): Flow<List<Crypto>>
+    fun getCryptos(): List<Crypto>
+
+    /**
+     * Insert shows in the database. If the show already exists, replace it.
+     *
+     * @param shows the shows to be inserted.
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(vararg shows: Crypto)
 }
