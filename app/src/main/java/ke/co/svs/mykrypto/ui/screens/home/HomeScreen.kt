@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import ke.co.svs.mykrypto.ui.components.BottomNavigationBar
 import ke.co.svs.mykrypto.utils.Resource
 import org.koin.androidx.compose.getViewModel
-import org.koin.androidx.compose.inject
+import androidx.lifecycle.lifecycleScope
 
 
 @Composable
@@ -20,8 +20,8 @@ fun HomeScreen(
     navController: NavController,
 ) {
     val scaffoldHostState = rememberScaffoldState()
-//   val viewModel by inject<HomeScreenViewModel>()
     val viewModel = getViewModel<HomeScreenViewModel>()
+
 
 
     Scaffold(
@@ -43,6 +43,7 @@ fun HomeScreen(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
+
 //            lifecycleScope.launch {
 //                viewModel.stateFlow.collect { resource ->
 //                    when (resource.status) {
