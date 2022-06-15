@@ -10,17 +10,17 @@ import retrofit2.http.Url
 
 interface CoinGeckoService {
     @GET("ticker")
-    fun getMyCryptos(@Query("limit") limit: Int):
+    suspend  fun fetchCryptos(@Query("limit") limit: Int):
             List<CryptoResponse>
 
     @GET("coins/markets")
-    fun getCryptoInfo(@Query("per_page") perPage: Int,
+    suspend fun fetchCryptoInfo(@Query("per_page") perPage: Int,
                       @Query("vs_currency") currency: String,
                       @Query("sparkline") sparkLine: Boolean): Flow<JsonArray>
 
     @GET
-    fun getCryptoDetails(@Url url: String): Flow<JsonObject>
+    suspend fun fetchCryptoDetails(@Url url: String): Flow<JsonObject>
 
     @GET
-    fun getCurrencies(@Url url: String): Flow<JsonObject>
+    suspend fun fetchCurrencies(@Url url: String): Flow<JsonObject>
 }

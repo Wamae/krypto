@@ -6,12 +6,15 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import ke.co.svs.mykrypto.ui.components.BottomNavigationBar
 import ke.co.svs.mykrypto.utils.Resource
 import org.koin.androidx.compose.getViewModel
+import androidx.compose.runtime.*
 import androidx.lifecycle.lifecycleScope
 
 
@@ -21,7 +24,6 @@ fun HomeScreen(
 ) {
     val scaffoldHostState = rememberScaffoldState()
     val viewModel = getViewModel<HomeScreenViewModel>()
-
 
 
     Scaffold(
@@ -43,16 +45,14 @@ fun HomeScreen(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
+            val resourceState by remember(viewModel) { viewModel.stateFlow }.collectAsState()
 
-//            lifecycleScope.launch {
-//                viewModel.stateFlow.collect { resource ->
-//                    when (resource.status) {
-//                        Resource.Status.SUCCESS -> Text(text = "Success")
-//                        Resource.Status.LOADING -> Text(text = "Loading")
-//                        Resource.Status.ERROR -> Text(text =resource.message!!)
-//                    }
-//                }
-//            }
+
+            when (resourceState.status) {
+                Resource.Status.SUCCESS -> Text(text = "Success")
+                Resource.Status.LOADING -> Text(text = "Loading")
+                Resource.Status.ERROR -> Text(text = resourceState.message!!)
+            }
 
         }
     }

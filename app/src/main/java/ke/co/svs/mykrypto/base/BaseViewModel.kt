@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+
 open class BaseViewModel<T>(
         private val repository: BaseRepository<T>
 ) : ViewModel() {
 
     private val _stateFlow = MutableStateFlow<Resource<T>>(Resource.loading())
-    val stateFlow: StateFlow<Resource<T>>
-        get() = _stateFlow
+    val stateFlow: StateFlow<Resource<T>> = _stateFlow
 
     init {
         refresh()

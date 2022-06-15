@@ -7,5 +7,7 @@ import ke.co.svs.mykrypto.domain.model.Crypto
 
 class HomeScreenViewModel(
     repository: BaseListRepository<Crypto>,
-) : BaseViewModel<List<Crypto>>(repository)
+) : BaseViewModel<List<Crypto>>(repository){
+
+}
 
