@@ -3,7 +3,7 @@ package ke.co.svs.mykrypto.domain.repositories
 import android.content.Context
 import ke.co.svs.mykrypto.base.BaseListRepository
 import ke.co.svs.mykrypto.cryptos.data.data_source.CryptoDao
-import ke.co.svs.mykrypto.domain.database.asDomainModel
+import ke.co.svs.mykrypto.domain.database.asCryptoModel
 import ke.co.svs.mykrypto.domain.model.Crypto
 import ke.co.svs.mykrypto.network.CoinGeckoService
 import kotlinx.coroutines.CoroutineDispatcher
@@ -21,7 +21,7 @@ class CryptoRepositoryImpl(
     }
 
     override suspend fun fetch(): List<Crypto> {
-        return coinGeckoService.fetchCryptos(limit = 25).asDomainModel()
+        return coinGeckoService.fetchBasicCryptoList().asCryptoModel()
     }
 
     override suspend fun saveFetchResult(items: List<Crypto>) {
