@@ -28,7 +28,7 @@ val retrofitModule = module {
     }
 }
 
-private fun Scope.retrofitHttpClient(): OkHttpClient {
+private fun retrofitHttpClient(): OkHttpClient {
     return OkHttpClient.Builder().apply {
         connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
         writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)

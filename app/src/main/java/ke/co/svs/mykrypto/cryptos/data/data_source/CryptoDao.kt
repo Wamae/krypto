@@ -2,7 +2,8 @@ package ke.co.svs.mykrypto.cryptos.data.data_source
 
 import androidx.room.*
 import ke.co.svs.mykrypto.domain.model.Crypto
-import kotlinx.coroutines.flow.Flow
+import ke.co.svs.mykrypto.domain.model.CryptoDetails
+
 /**
  *Accessing Room Database
  */
@@ -10,13 +11,13 @@ import kotlinx.coroutines.flow.Flow
 interface CryptoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCrypto(crypto: Crypto)
+    suspend fun insertCrypto(crypto: CryptoDetails)
 
     @Delete
-    suspend fun deleteCrypto(crypto: Crypto)
+    suspend fun deleteCrypto(cryptoDetails: CryptoDetails)
 
     @Query("SELECT * FROM cryptos WHERE id = :id")
-    suspend fun getCryptoById(id: Int): Crypto?
+    suspend fun getCryptoById(id: Int): CryptoDetails?
 
     @Query("SELECT * FROM cryptos")
     fun getCryptos(): List<Crypto>
