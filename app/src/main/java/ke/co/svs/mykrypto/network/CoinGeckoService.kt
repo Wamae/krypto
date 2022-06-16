@@ -15,7 +15,7 @@ interface CoinGeckoService {
             List<CryptoDetailsResponse>
 
     @GET("coins/list")
-    suspend fun fetchBasicCryptoList(): List<CryptoResponse>
+    suspend fun fetchBasicCryptoList(): List<CryptoDetailsResponse>
 
 
     @GET("coins/markets")

@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 
 abstract class BaseRepository<T>(
     context: Context,
@@ -40,9 +41,9 @@ abstract class BaseRepository<T>(
                     if (isNotEmpty(it)) {
                         return@flow
                     }
-                    Log.e(this@BaseRepository.javaClass.name,t.message!!)
-                    Log.e(this@BaseRepository.javaClass.name,t.stackTraceToString())
-                    emit(Resource.error(t.message ?: context.getString(R.string.failed_loading_msg)))
+                    Timber.tag(this.javaClass.name).e(t.stackTraceToString())
+                    emit(Resource.error(t.message
+                        ?: context.getString(R.string.failed_loading_msg)))
                 }
             } else {
                 if (isNotEmpty(it)) {

@@ -121,4 +121,7 @@ dependencies {
     //Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
 
+    //Coil
+    implementation("io.coil-kt:coil-compose:$coil_version")
+
 }
