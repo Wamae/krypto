@@ -118,4 +118,5 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.4.2' // Kotlin Extensions and Coroutines support for Room
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1' // LifecycleScope
 
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
 }
