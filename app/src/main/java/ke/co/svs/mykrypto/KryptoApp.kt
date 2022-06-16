@@ -11,6 +11,7 @@ import org.koin.core.context.GlobalContext.startKoin
 import org.koin.core.parameter.ParametersDefinition
 import org.koin.core.qualifier.Qualifier
 import org.koin.core.scope.Scope
+import timber.log.Timber
 
 class KryptoApp : Application() {
 
@@ -32,6 +33,9 @@ class KryptoApp : Application() {
                 dispatcherModule
             )
         }
+
+        //Timber set up
+        Timber.plant(Timber.DebugTree())
     }
 
 
