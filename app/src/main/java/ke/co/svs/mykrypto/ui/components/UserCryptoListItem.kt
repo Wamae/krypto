@@ -12,10 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.Glide
 import ke.co.svs.mykrypto.domain.model.Crypto
+import ke.co.svs.mykrypto.domain.model.CryptoDetails
+import ke.co.svs.mykrypto.domain.model.UserCrypto
 
 @Composable
-fun CryptoListItem(
-    crypto: Crypto,
+fun UserCryptoListItem(
+    userCrypto: UserCrypto,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -29,7 +31,7 @@ fun CryptoListItem(
                 modifier = Modifier
                     .weight(1f)
                     .padding(start = 16.dp),
-                text = crypto.symbol!!
+                text = userCrypto.id!!
             )
 
         }

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 class CryptoDetailsResponse(
     @SerializedName("id") val id: String?,
 //    @SerializedName("quantity") var myQuantity: Double? = 0.0,
-     var imageUrl: String?,
+    @SerializedName("image") var imageUrl: String?,
     @SerializedName("name") val name: String?,
     @SerializedName("symbol") val symbol: String?,
     @SerializedName("rank") val rank: Int?,
@@ -19,7 +19,7 @@ class CryptoDetailsResponse(
     @SerializedName("percent_change_1h") val percentChange_1h: Double?,
     @SerializedName("percent_change_24h") val percentChange_24h: Double?,
     @SerializedName("percent_change_7d") val percentChange_7d: Double?,
-    @SerializedName("last_updated") val lastUpdated: Int?
+    @SerializedName("last_updated") val lastUpdated: String?
 ) {
     override fun toString(): String {
         return this.name + " (${this.symbol})"

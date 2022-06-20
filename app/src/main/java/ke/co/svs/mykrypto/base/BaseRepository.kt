@@ -3,6 +3,7 @@ package ke.co.svs.mykrypto.base
 import android.content.Context
 import android.util.Log
 import ke.co.svs.mykrypto.R
+import ke.co.svs.mykrypto.domain.model.CryptoDetails
 import ke.co.svs.mykrypto.utils.Resource
 import ke.co.svs.mykrypto.utils.isNetworkAvailable
 import kotlinx.coroutines.CoroutineDispatcher
@@ -13,12 +14,17 @@ import timber.log.Timber
 
 abstract class BaseRepository<T>(
     context: Context,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
 ) {
 
     protected abstract suspend fun query(): T
 
-    protected abstract suspend fun fetch(): T
+    // ToDo to be refactored because single principle
+    protected abstract suspend fun fetch(
+        limit: Int = 100,
+        currency: String = "usd",
+        ids: String = "",
+    ): T
 
     protected abstract suspend fun saveFetchResult(items: T)
 
@@ -27,10 +33,12 @@ abstract class BaseRepository<T>(
     val result: Flow<Resource<T>> = flow<Resource<T>> {
         emit(Resource.loading())
         query().let {
+
             if (isNotEmpty(it)) {
                 // ****** STEP 1: VIEW CACHE ******
                 emit(Resource.success(it))
             }
+
             if (context.isNetworkAvailable()) {
                 try {
                     // ****** STEP 2: MAKE NETWORK CALL, SAVE RESULT TO CACHE ******

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CryptoRepository {
     fun getAllCryptos(): Flow<List<Crypto>>
-    suspend fun fetchCryptos(limit: Int): Flow<List<CryptoDetailsResponse>>
+    suspend fun fetchCryptos(limit: Int): List<CryptoDetailsResponse>
 
     // fun getAllCryptoInfo(perPage: Int): Flow<JsonArray>
 

@@ -2,6 +2,7 @@ package ke.co.svs.mykrypto.cryptos.data.data_source
 
 import androidx.room.*
 import ke.co.svs.mykrypto.domain.model.Crypto
+import kotlinx.coroutines.flow.Flow
 
 /**
  *Accessing Room Database
@@ -21,11 +22,6 @@ interface CryptoDao {
     @Query("SELECT * FROM cryptos")
     fun getCryptos(): List<Crypto>
 
-    /**
-     * Insert shows in the database. If the show already exists, replace it.
-     *
-     * @param shows the shows to be inserted.
-     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg shows: Crypto)
+    suspend fun insertAll(vararg cryptos: Crypto)
 }

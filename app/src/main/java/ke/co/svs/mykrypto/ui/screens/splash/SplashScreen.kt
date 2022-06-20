@@ -22,7 +22,6 @@ import kotlinx.coroutines.delay
 fun SplashScreen(navController: NavController) {
     val scale = remember {
         Animatable(0f)
-
     }
 
     LaunchedEffect(key1 = true) {

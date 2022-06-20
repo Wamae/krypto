@@ -24,7 +24,6 @@ fun HomeScreen(
     val scaffoldHostState = rememberScaffoldState()
     val viewModel = getViewModel<HomeScreenViewModel>()
 
-
     Scaffold(
         scaffoldState = scaffoldHostState,
 //        topBar = { TopBar(navController = navController) },
@@ -46,9 +45,8 @@ fun HomeScreen(
         ) {
             val resourceState by remember(viewModel) { viewModel.stateFlow }.collectAsState()
 
-
             when (resourceState.status) {
-                Resource.Status.SUCCESS -> CryptoList(list = resourceState.data!!,  modifier = Modifier )
+                Resource.Status.SUCCESS -> CryptoDetailsList(list = resourceState.data!!,  modifier = Modifier )
                 Resource.Status.LOADING -> Text(text = "Loading")
                 Resource.Status.ERROR -> Text(text = resourceState.message!!)
             }
