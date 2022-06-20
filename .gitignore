@@ -88,3 +88,6 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+
+# husky and commit conventions
+/node_modules
