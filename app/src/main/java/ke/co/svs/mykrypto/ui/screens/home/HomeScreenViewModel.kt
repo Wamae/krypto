@@ -29,21 +29,9 @@ class HomeScreenViewModel(
     val stateFlow = _stateFlow.asStateFlow()
 
     init {
-        //Check if user has userCrypto
-        // Check if user has Crypto
-
-        //ToDo combine userCrypto and CryptoDetails
-
         checkForUserCrypto()
     }
 
-    private fun fetch() {
-        viewModelScope.launch {
-//            cryptoDetailsRepository.result.collect {
-//                _stateFlow.value = it
-//            }
-        }
-    }
 
     private fun checkForUserCrypto() {
         viewModelScope.launch {
@@ -79,12 +67,9 @@ class HomeScreenViewModel(
                             }
                     )
 
-
                 }
             }
         }
     }
-
-
 }
 

@@ -75,22 +75,26 @@ fun CryptoDetailListItem(
 fun CustomRow(leftText: String, rightText: String) {
 
     Row(modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceEvenly) {
-        Text(
-            text = leftText,
-            modifier = Modifier
-                .padding(start = 16.dp),
-            textAlign = TextAlign.Left,
-            fontWeight = FontWeight.Bold
-        )
-
-        Text(
-            text = rightText,
-            modifier = Modifier
-                .padding(start = 16.dp),
-            textAlign = TextAlign.Left,
-        )
+        verticalAlignment = Alignment.CenterVertically) {
+        Row(modifier = Modifier.weight(1f),
+            verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = leftText,
+                modifier = Modifier
+                    .padding(start = 16.dp),
+                textAlign = TextAlign.Left,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        Row(modifier = Modifier.weight(1f),
+            verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = rightText,
+                modifier = Modifier
+                    .padding(start = 16.dp),
+                textAlign = TextAlign.Left,
+            )
+        }
 
     }
 }
