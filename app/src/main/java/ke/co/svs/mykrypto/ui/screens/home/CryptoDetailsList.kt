@@ -15,23 +15,23 @@
  */
 package ke.co.svs.mykrypto.ui.screens.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ke.co.svs.mykrypto.domain.model.Crypto
-import ke.co.svs.mykrypto.domain.model.CryptoDetails
-import ke.co.svs.mykrypto.ui.components.CryptoDetailsListItem
-import ke.co.svs.mykrypto.ui.components.CryptoListItem
+import ke.co.svs.mykrypto.domain.model.UserCryptoDetail
+import ke.co.svs.mykrypto.ui.components.CryptoDetailListItem
 
 
 @Composable
-fun CryptoDetailsList(
-    list: List<CryptoDetails>,
+fun CryptoDetailList(
+    list: List<UserCryptoDetail>,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
-        modifier = modifier
+        modifier = modifier,
+        verticalArrangement = Arrangement.Top
     ) {
         items(
             items = list,
@@ -40,10 +40,10 @@ fun CryptoDetailsList(
              * instead of using the default key (list position). This prevents unnecessary
              * recompositions.
              */
-            key = { cryptoDetails -> cryptoDetails.id }
-        ) { cryptoDetails ->
-            CryptoDetailsListItem(
-                cryptoDetails = cryptoDetails,
+            key = { cryptoDetail -> cryptoDetail.id }
+        ) { cryptoDetail ->
+            CryptoDetailListItem(
+                cryptoDetail = cryptoDetail,
                 onClick = {},
                 modifier = modifier
             )

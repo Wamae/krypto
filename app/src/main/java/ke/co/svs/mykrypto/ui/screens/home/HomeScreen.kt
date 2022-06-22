@@ -44,9 +44,9 @@ fun HomeScreen(
             contentAlignment = Alignment.Center
         ) {
             val resourceState by remember(viewModel) { viewModel.stateFlow }.collectAsState()
-
+         
             when (resourceState.status) {
-                Resource.Status.SUCCESS -> CryptoDetailsList(list = resourceState.data!!,  modifier = Modifier )
+                Resource.Status.SUCCESS -> CryptoDetailList(list = resourceState.data!!,  modifier = Modifier )
                 Resource.Status.LOADING -> Text(text = "Loading")
                 Resource.Status.ERROR -> Text(text = resourceState.message!!)
             }

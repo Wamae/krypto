@@ -6,9 +6,11 @@ import ke.co.svs.mykrypto.cryptos.data.data_source.UserCryptoDao
 import ke.co.svs.mykrypto.domain.database.asUserCryptoModel
 import ke.co.svs.mykrypto.domain.model.UserCrypto
 import ke.co.svs.mykrypto.network.CoinGeckoService
+import ke.co.svs.mykrypto.utils.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flow
 
 class UserCryptoRepositoryImpl(
     private val coinGeckoService: CoinGeckoService,
@@ -17,8 +19,8 @@ class UserCryptoRepositoryImpl(
     dispatcher: CoroutineDispatcher
 )  {
 
-     suspend fun query(): List<UserCrypto> {
-        return dao.getCryptos()
+     suspend fun query(): Flow<Resource<List<UserCrypto>>> {
+        return flow { emit( Resource.success(dao.getCryptos())) }
     }
 
 }

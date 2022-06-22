@@ -20,7 +20,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import ke.co.svs.mykrypto.domain.model.Crypto
-import ke.co.svs.mykrypto.domain.model.CryptoDetails
 import ke.co.svs.mykrypto.ui.components.CryptoListItem
 
 

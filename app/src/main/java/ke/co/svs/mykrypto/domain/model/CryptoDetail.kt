@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "cryptos_details")
-class CryptoDetails (
+class CryptoDetail (
     @PrimaryKey
     val id: String,
     val name: String?,
