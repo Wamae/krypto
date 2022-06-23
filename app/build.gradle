@@ -93,15 +93,15 @@ dependencies {
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
 
     //Koin
-    // Koin Core features
     implementation "io.insert-koin:koin-core:$koin_version"
-    // Koin Test features
-    testImplementation "io.insert-koin:koin-test:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-android-compat:$koin_version"
     implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
     implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+    // Koin Test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -109,16 +109,23 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    // optional - Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
-
     //room
     implementation "androidx.room:room-runtime:$room_version"
     kapt  "androidx.room:room-compiler:$room_version"
     implementation 'androidx.room:room-ktx:2.4.2' // Kotlin Extensions and Coroutines support for Room
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1' // LifecycleScope
 
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
     //Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:$glide_version")
+    annotationProcessor("com.github.bumptech.glide:compiler:$glide_version")
+
+//    https://stackoverflow.com/questions/68473542/mediasessioncompattargeting-s-version-31-and-above-requires-that-one-of-flag
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
 }

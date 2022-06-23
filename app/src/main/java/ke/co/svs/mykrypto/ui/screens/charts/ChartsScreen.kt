@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import ke.co.svs.mykrypto.ui.components.BottomNavigationBar
-import ke.co.svs.mykrypto.ui.components.TopBar
+import ke.co.svs.mykrypto.ui.components.CollapsingToolBar
 
 @Composable
 fun ChartsScreen(
@@ -20,7 +20,7 @@ fun ChartsScreen(
     val scaffoldHostState = rememberScaffoldState()
     Scaffold(
         scaffoldState = scaffoldHostState,
-        topBar = { TopBar(navController = navController) },
+        topBar = { CollapsingToolBar(navController = navController) },
 
         bottomBar = {
             BottomNavigationBar(

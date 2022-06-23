@@ -17,11 +17,11 @@ class CryptoRepositoryImpl(
 ) : BaseListRepository<Crypto>(context, dispatcher) {
 
     override suspend fun query(): List<Crypto> {
-        return dao.getCryptos();
+        return dao.getCryptos()
     }
 
-    override suspend fun fetch(): List<Crypto> {
-        return coinGeckoService.fetchBasicCryptoList().asCryptoModel()
+    override suspend fun fetch(limit: Int,currency:String, ids:String): List<Crypto> {
+        return coinGeckoService.fetchBasicCryptoList(limit = limit).asCryptoModel()
     }
 
     override suspend fun saveFetchResult(items: List<Crypto>) {

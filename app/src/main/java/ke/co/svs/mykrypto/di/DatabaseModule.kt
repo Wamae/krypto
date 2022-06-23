@@ -3,6 +3,8 @@ package ke.co.svs.mykrypto.di
 import android.app.Application
 import androidx.room.Room
 import ke.co.svs.mykrypto.cryptos.data.data_source.CryptoDao
+import ke.co.svs.mykrypto.cryptos.data.data_source.CryptoDetailDao
+import ke.co.svs.mykrypto.cryptos.data.data_source.UserCryptoDao
 import ke.co.svs.mykrypto.domain.database.RoomDB
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
@@ -16,10 +18,20 @@ val databaseModule = module {
         ).build()
     }
 
-    fun provideDao(dataBase: RoomDB): CryptoDao {
+    fun provideCryptoDao(dataBase: RoomDB): CryptoDao {
         return dataBase.cryptoDao
     }
 
+    fun provideCryptoDetailsDao(dataBase: RoomDB): CryptoDetailDao {
+        return dataBase.cryptoDetailsDao
+    }
+
+    fun provideUserCryptoDetailsDao(dataBase: RoomDB): UserCryptoDao {
+        return dataBase.userCryptoDetailsDao
+    }
+
     single { provideDatabase(androidApplication()) }
-    single { provideDao(get()) }
+    single { provideCryptoDao(get()) }
+    single { provideCryptoDetailsDao(get()) }
+    single { provideUserCryptoDetailsDao(get()) }
 }

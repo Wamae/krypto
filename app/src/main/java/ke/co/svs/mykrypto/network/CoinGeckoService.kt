@@ -1,31 +1,32 @@
 package ke.co.svs.mykrypto.network
 
-import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import ke.co.svs.mykrypto.network.responses.CryptoDetailsResponse
-import ke.co.svs.mykrypto.network.responses.CryptoResponse
-import kotlinx.coroutines.flow.Flow
+import ke.co.svs.mykrypto.network.responses.CryptoDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Url
 
 interface CoinGeckoService {
     @GET("ticker")
-    suspend  fun fetchCryptoDetails(@Query("limit") limit: Int):
-            List<CryptoDetailsResponse>
+    suspend fun fetchCryptoDetails(@Query("limit") limit: Int):
+            List<CryptoDetailResponse>
 
     @GET("coins/list")
-    suspend fun fetchBasicCryptoList(): List<CryptoResponse>
+    suspend fun fetchBasicCryptoList(@Query("limit") limit: Int):
+            List<CryptoDetailResponse>
 
 
     @GET("coins/markets")
-    suspend fun fetchCryptoInfo(@Query("per_page") perPage: Int,
-                      @Query("vs_currency") currency: String,
-                      @Query("sparkline") sparkLine: Boolean): Flow<JsonArray>
+    suspend fun fetchCryptoDetails(
+        @Query("vs_currency") currency: String,
+        @Query("ids") ids: String,
+//        @Query("sparkline") sparkLine: Boolean,
+//        @Query("per_page") perPage: Int,
+    ): List<CryptoDetailResponse>
 
     @GET
-    suspend fun fetchCryptoDetails(@Url url: String): Flow<JsonObject>
+    suspend fun fetchCryptoDetails(@Url url: String): JsonObject
 
     @GET
-    suspend fun fetchCurrencies(@Url url: String): Flow<JsonObject>
+    suspend fun fetchCurrencies(@Url url: String): JsonObject
 }
