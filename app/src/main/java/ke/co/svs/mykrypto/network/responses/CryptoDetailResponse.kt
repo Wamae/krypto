@@ -8,7 +8,7 @@ class CryptoDetailResponse(
     @SerializedName("name") val name: String?,
     @SerializedName("symbol") val symbol: String?,
     @SerializedName("high_24h") val high_24h: Int?,
-    @SerializedName("low_24h") val low_24h: Int?,
+    @SerializedName("low_24h") val low_24h: Double?,
     @SerializedName("market_cap") val marketCapUSD: Double?,
     @SerializedName("market_cap_rank") val rank: Int?,
     @SerializedName("current_price") var priceUSD: Double?,
